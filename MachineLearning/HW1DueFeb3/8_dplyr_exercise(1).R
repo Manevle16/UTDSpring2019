@@ -6,14 +6,15 @@ filter(df, mpg > 20 & cyl > 6)
 # 2. Reorder the Data Frame by cyl first, then by descending wt. 
 arrange(df, cyl, desc(wt))
 # 3. Select the columns mpg and hp
-df[, c("mpg", "hp")]
+select(df, mpg, hp)
 # 4. Select the distinct values of the gear column. 
-distinct(df["gear"])
+distinct(df, gear)
 # 5. Create a new column called "Performance" which is calculated by hp 
 #    divided by wt. 
 mutate(df, Performance = hp/wt)
 # 6. Find the mean mpg value using dplyr. 
-
+summarise(df, mean = mean(mpg))
 # 7. Use pipe operators to get the mean hp value for cars with 6 cylinders. 
-
-
+df %>%
+  filter(cyl == 6) %>%
+  summarise(mean = mean(mpg), n = n())
