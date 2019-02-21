@@ -55,7 +55,7 @@ ggplot(df.data, aes(x=count, y=datetime)) + geom_point(aes(color = factor(temp))
 # 7.  Let's explore the season data. Create a boxplot, 
 #     with the y axis indicating count and the x axis begin a box for each season.
 
-#Summer and fall are the most popular seasons for rneting bikes
+#Summer and fall are the most popular seasons for renting bikes
 ggplot(df.data, aes(x=season, y=count)) + geom_boxplot(aes(fill = factor(season)))
 
 # 8.  Create an "hour" column that takes the hour from the datetime column. 

@@ -96,7 +96,7 @@ adult$marital <- factor(adult$marital)
 adult$country <- factor(adult$country)
 # Note: You could have also done something like:
 # adult$type_employer <- factor(adult$type_employer)
-
+colnames(adult) <- c("aaa", "bb")
 
 # 16. Convert any cell with a '?' or a ' ?' value to a NA value. 
 # Hint: is.na() may be useful here or you can also use brackets with a 
