@@ -1,10 +1,9 @@
 #install.packages('ISLR',repos = 'http://cran.us.r-project.org')
 
-install.packages('ISLR')
 library(ISLR)
 
 # Insurance Policy Purchase
-str(Caravan)
+length(Caravan[,1])
 
 summary(Caravan$Purchase) # only 6% purchased the policy
 348/5474
@@ -37,7 +36,7 @@ standardized.Caravan <- scale(Caravan[,-86])
 var(standardized.Caravan[,1])
 var(standardized.Caravan[,2])
 print(head(standardized.Caravan))
-
+length(standardized.Caravan[,1])
 # Train Test Split
 # First 1000 rows for test set
 test.index <- 1:1000
@@ -50,7 +49,7 @@ train.purchase <- purchase[-test.index]
 
 # KNN Model
 library(class) # contains KNN function
-set.seed(101)
+
 #Given train features, test features, train labels, and k value, return the predictions for the test.data
 predicted.purchase <- knn(train.data,test.data,train.purchase,k=1)
 head(predicted.purchase)
@@ -77,7 +76,6 @@ error.rate <- NULL
 
 #Do K Nearest Neighbors for kvalues 1 from 20 and store all the error rates
 for(i in 1:20){
-  set.seed(101)
   predicted.purchase = knn(train.data,test.data,train.purchase,k=i)
   error.rate[i] = mean(test.purchase != predicted.purchase)
 }
