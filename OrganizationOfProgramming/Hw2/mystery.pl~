@@ -1,0 +1,3 @@
+mystery([],X,X).
+mystery(X,[F|R],[F|S]) :- mystery(X,R,S).
+
