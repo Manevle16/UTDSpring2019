@@ -40,7 +40,7 @@ df.test <- subset(df, split == FALSE)
 library(rpart)
 
 tree <- rpart(Private ~ ., method='class', df.train)
-
+summary(tree)
 # Use predict() to predict the Private label on the test data.
 predictions <- data.frame(predict(tree, df.test))
 
