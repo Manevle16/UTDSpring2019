@@ -1,46 +1,73 @@
 import heapq
 import math
+import statistics
+import copy
+
 def OptimalShelving(books, shelves, f):
     #books.sort(reverse = True)
     #print(books)
 
     i = 0
     j = 0
-    space = int(shelves[0][0]*f)
-    print(space)
-    W = sum(books)
-    parts = math.ceil(W/(shelves[0][0]*(1-f)))
-    space = shelves[0][0] - math.floor(sum(books)/parts)
-    print("parts: {0}   space: {1}".format(parts, space))
 
+    minSpace = int(shelves[0][0]*f)
 
-    '''
-    Use max heap
-    for shelf in shelves:
-        heapq.heappush(shelf)
-    '''
-    '''
-    while(len(books) > 0):
-        max = 0
-        ind = 0
-        # Possibly use heap for this
-        # shelf = heapq.pop()
-        for i in range(0, parts):
-            if(max < shelves[i][0]):
-                max = shelves[i][0]
-                ind = i
-        #shelves[shelf.ind][0] -= books[0]
-        #heappq.push(shelves[ind][0])
-        #shelves[shelves].append(books.pop(0))
-        shelves[ind][0] -= books[0]
-        shelves[ind].append(books.pop(0))
-    '''
 
     while(j < len(books)):
-        if shelves[i][0] - space < books[j]:
+        if shelves[i][0] - minSpace < books[j]:
             i += 1
+            shelves.append([])
+            shelves[i].append(30)
         shelves[i][0] -= books[j]
         shelves[i].append(books[j])
         j += 1
 
+    dev = []
+    i = 0
+    while(i != len(shelves)):
+        dev.append(shelves[i][0])
+        i += 1
+
+
+    minDev = statistics.stdev(dev)
+    avg = sum(dev)/len(dev)
     print(shelves)
+    print("Standard Deviation: {0}".format(minDev))
+
+    j = 0
+    shelvesCopy = copy.deepcopy(shelves)
+    while(j < minSpace):
+        for x in range(len(shelvesCopy)):
+            if shelvesCopy[x][0] > avg:
+                if x == len(shelvesCopy) - 1 or (x > 0 and x < len(shelvesCopy) - 1 and shelvesCopy[x-1][0] <= shelvesCopy[x+1][0]):
+                    if shelvesCopy[x][0] - shelvesCopy[x-1][len(shelvesCopy[x-1]) - 1] >= minSpace:
+                        book = shelvesCopy[x-1].pop()
+                        shelvesCopy[x-1][0] += book
+                        shelvesCopy[x][0] -= book
+                        shelvesCopy[x].insert(1, book)
+                elif (x == 0 or (x > 0 and x < len(shelvesCopy) - 1 and shelvesCopy[x-1][0] > shelvesCopy[x+1][0])):
+                    if shelvesCopy[x][0] - shelvesCopy[x+1][1] >= minSpace:
+                        book = shelvesCopy[x+1].pop(1)
+                        shelvesCopy[x+1][0] += book
+                        shelvesCopy[x][0] -= book
+                        shelvesCopy[x].append(book)
+            dev = []
+            i = 0
+            while(i != len(shelves)):
+                dev.append(shelvesCopy[i][0])
+                i += 1
+            std = statistics.stdev(dev)
+            
+            if std < minDev:
+                shelves = shelvesCopy
+                minDev = std
+                avg = sum(dev)/len(dev)
+
+
+        if std == minDev:
+            break
+
+        j += 1
+
+    print(shelves)
+    print("Standard Deviation: {0}".format(minDev))
