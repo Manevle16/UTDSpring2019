@@ -5,15 +5,16 @@ import statistics
 std = 0
 length = 1
 for i in range(length):
-    random.seed()
+    random.seed(4)
     books = []
     shelves = []
+
     for j in range(0, 30):
         books.append(random.randint(1, 10))
 
     shelves.append([])
     shelves[0].append(30)
-
+#    print(books)
     space = .2
 
     shelve = OptimalShelf.OptimalShelving(books, shelves, space, 30)
@@ -26,10 +27,9 @@ for i in range(length):
     minDev = statistics.stdev(dev)
     std += minDev
     avg = sum(dev)/len(dev)
-
-    print("Coef of Var: {0}".format(minDev/avg))
-    print(shelves)
-    print()
+    #print("Coef of Var: {0}".format(minDev/avg))
+    #print(shelve)
+    #print()
 
 
 
