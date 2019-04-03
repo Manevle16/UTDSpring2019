@@ -1,0 +1,88 @@
+1. Naiive Bayes
+   Consider a patient that has recieved test results T+ meaning the test is positive for
+   cancer. Calculate P(cancer|T+). Here is what we know about the probabilites of cancer
+   and not cancer, and the probabilities of T+(test positive):
+
+   P(cancer) = 0.008
+   P(T+|cancer) = 0.98
+   P(T+)
+
+   a) Write out the Baye's theorem using the notations above:
+      P(cancer|T+) = (P(T+|cancer) X P(cancer))/P(T+)
+
+   b) Write the mathematical expression to calculate P(cancer|T+) using your formula from
+      a) above and the data above
+      P(cancer|T+) =  (.98 X .008)/P(T+)     
+
+   c) Why is Naiive Bayes called "naiive"?
+      Because the algorithm makes assumptions about the data that may or may not be correct. Naiive Bayes will 
+      assume the presence or absence of a feature will not affect the presence or absence of another feature.
+
+2. What is step 1 of the k-means algorithm?
+   
+3. What is a centroid in k-means clustering and how is it determined in the iterative cycles of
+   the algorithm.
+4. In one run of the KNN model, k=1 and in another run k=7.
+   a) If the data set is very small and sparse, which k might be better? why?
+   b) if the data is very large, which k might be better? why?
+   c) Given knn with k=5, describe how knn:
+      i) calculate the real value in regression
+      ii) selects a class in classification
+
+5. 
+  a) In k-means clustering, k centroids are:
+  b) In the k-means algorithm, data points are assigned to a cluster in what fashion?
+  c) If your algorithm performs well on the training data but poorly on test data, you are 
+     suffering from? 
+  d) In linear regression, what are residuals?
+  e) * In Logistic regression model, which variables were important and which ones were not?
+  f) * What was the accuracy of the logistic regression model and decision tree model?
+  g) Is it a good idea to prune the tree? Why or why not?
+  h) * Compare the accuracy of the logistic regression and the decision tree?
+  i) * Which model (LR, or DT) might be more meaningful to a doctor, and why?
+  j) * Which variables were important (2 or 3 **) in the LR model?
+  k) * Which variables were used to created the DT?
+  l) * What was the accuracy of the pruned tree?
+
+6)
+  a) Is KNN a parametric algorithm?
+  b) can KNN be used for both classification and regression?
+  c) P(A|B) = P(B|A) X P(A) / P(B)
+     Need to know what each component is?
+  d) Does decision tree tend to be less accurate than other supervised methods?
+  e) Decision trees can be used for both classification and regression? T/F
+  f) Decision trees are always more accurate after pruning? T/F
+  g) What is characterized by low bias and high variance? (LR, LOGR, DT)
+  h) What is characterized by high bias, low variance?
+  i) Why do we prune decision trees?
+  j) In which type of learning target variable is a real number? and a class variable?
+  k) What is the prupose of train and test data sets?
+  
+7) In a given problem, we are interested in using the ID3 decision tree induction algorithm to
+   automatically determine something. Show the decision tree created by the ID3 desion tree learning algorithm. Show      the information gain calculations that you computed to create the tree.
+
+* ISLR library and attach the default data set; and also you can look up Heart data set
+Programming Hints:
+    i) Download the heart data to your machine
+   ii) Load the data into R and attach it
+  iii) Remove the "X" column
+   iv) Set up train and test sets with 80% training using a seed
+    v) Create LR model on training where AHD is predicted by all other variables
+   vi) Run a summary of the model
+  vii) Predict Yes/No on the test data
+ viii) Compute the accuracy
+
+    i) Create a decision tree model on the training data
+   ii) Run a summary of the model
+  iii) Make predictions of the test data
+   iv) Compute the accuracy
+    v) Print the tree with labels
+   vi) Cross Validation
+       a) Create a new tree from the cv.tree() function
+       b) Look at the $dev and $size variables by the displaying the tree using its name
+  vii) Prune the tree
+       a) create a new pruned tree using best=n where n is the optimal size indicated in step vi) above
+       b) plot the new pruned tree with labels
+ viii) Predict
+       a) Using the pruned tree, make predictions on the test data set
+       b) Compute the accuracy
