@@ -19,25 +19,57 @@
       assume the presence or absence of a feature will not affect the presence or absence of another feature.
 
 2. What is step 1 of the k-means algorithm?
+   Assign every observation a random assignment to one of the clusters from 1 to k. 
    
 3. What is a centroid in k-means clustering and how is it determined in the iterative cycles of
    the algorithm.
+   The centroid is the mean of all the observations that fall into the clustter associated with it. Every iteration
+   all the observations get put into the cluster corresponding with the closest centroid, then the new centroid for
+   that cluster is recalculated. This will continue iterating until no new assignments to a cluster is made.
+   
 4. In one run of the KNN model, k=1 and in another run k=7.
    a) If the data set is very small and sparse, which k might be better? why?
+      k = 1, because the data is sparse meaning observations which are far away from eachother will be considered
+      for assigning the response if k=7 was chosen. Also there is not a lot of data to process, so a large k will
+      result in the model considering a large portion of the observations to determine the response which will have a
+      high chance in including observations from seperate classes making the model inaccurate in its predictions 
+      introducing a lot of bias.
+      
    b) if the data is very large, which k might be better? why?
+      k = 7, because a a too small of a k will have a model with a very high variance since the category an 
+      observation may be assigned to is highly dependent on only one observation. A larger k will allow it to 
+      consider multiple observations, reducing any possible noise in the graph, allowing for a better model 
+      to be developed for the large data set.
+      
    c) Given knn with k=5, describe how knn:
       i) calculate the real value in regression
+         Knn will select the 5 closest observations to the input observations and get the mean of all the training 
+         responses associated with the 5 observations that were grabbed. This value will be the prediction the model 
+         gives for the input observations.
+         
       ii) selects a class in classification
-
+          Knn will select the 5 closest observations to the input observations. Whichever category has the majority
+          of responses for these 5 observations will be the prediction for the input observations.
 5. 
   a) In k-means clustering, k centroids are:
+     The mean for each cluster k's observations.
+     
   b) In the k-means algorithm, data points are assigned to a cluster in what fashion?
+     Whichever centroid is closest to the data point is assigned to the cluster associated with the centroid.
+     
   c) If your algorithm performs well on the training data but poorly on test data, you are 
      suffering from? 
+     Overfitting.
+     
   d) In linear regression, what are residuals?
+     The difference between the prediciton and the actual response.
+     
   e) * In Logistic regression model, which variables were important and which ones were not?
   f) * What was the accuracy of the logistic regression model and decision tree model?
   g) Is it a good idea to prune the tree? Why or why not?
+     Its only a good idea to prune the tree if it is having overfitting issue, or if a better understanding
+     of the observations effect on the response is needed.
+     
   h) * Compare the accuracy of the logistic regression and the decision tree?
   i) * Which model (LR, or DT) might be more meaningful to a doctor, and why?
   j) * Which variables were important (2 or 3 **) in the LR model?
@@ -46,17 +78,44 @@
 
 6)
   a) Is KNN a parametric algorithm?
+     Nonparametric since there is no set number of parameters for the model.
+     
   b) can KNN be used for both classification and regression?
+  Yes.
+  
   c) P(A|B) = P(B|A) X P(A) / P(B)
      Need to know what each component is?
+     P(A|B) - The probability of B given A occurs
+     P(B|A) - The probability of A given B occurs
+     P(A) - The probability of A occuring
+     P(B) - The probability of B occuring
+     
   d) Does decision tree tend to be less accurate than other supervised methods?
+     Yes.
+     
   e) Decision trees can be used for both classification and regression? T/F
+     T
+     
   f) Decision trees are always more accurate after pruning? T/F
+     F
+     
   g) What is characterized by low bias and high variance? (LR, LOGR, DT)
+     Decision Trees
+     
   h) What is characterized by high bias, low variance?
+  Linear and Logistic Regression
+  
   i) Why do we prune decision trees?
+     Sometimes the tree may be overfitting the problem, or a better understanding of the predictors effect
+     on the outcome is desired.
+     
   j) In which type of learning target variable is a real number? and a class variable?
+     Real number - Quantitative
+     Class Variable - Qualitative
+     
   k) What is the prupose of train and test data sets?
+     The training data set allows the model to have something to base its predictions on and be built with. 
+     The test data set allows the model to be tested for how well it works on unbefore seen data.
   
 7) In a given problem, we are interested in using the ID3 decision tree induction algorithm to
    automatically determine something. Show the decision tree created by the ID3 desion tree learning algorithm. Show      the information gain calculations that you computed to create the tree.
