@@ -47,6 +47,7 @@ cvTree
 prunedTree = prune.misclass(newTree, best = 13)
 
 # b) plot the new pruned tree with labels
+plot(prunedTree)
 text(prunedTree, pretty = 0)
 # viii) Predict
 # a) Using the pruned tree, make predictions on the test data set
