@@ -22,9 +22,7 @@ def Add(lh, rh):
 def MultBinary(x, y, xW, yW):
     global num
     num += 1
-#    print(num)
-#    print(x)
-#    print(y)
+
     if(len(x) == 1 and len(y) == 1):
         s = []
         s.append(x[0] * y[0])
@@ -61,25 +59,6 @@ def MultBinary(x, y, xW, yW):
         rlSum = MultBinary(rHX, lHY, rHXW, lHYW)
         rrSum = MultBinary(rHX, rHY, rHXW, rHYW)
 
-    maxLen = max(len(llSum), len(lrSum), len(rlSum), len(rrSum))
-
-    while(True):
-        change = False
-        if(len(llSum) < maxLen):
-            llSum.insert(0, 0)
-            change = True
-        if(len(lrSum) < maxLen):
-            lrSum.insert(0, 0)
-            change = True
-        if(len(rlSum) < maxLen):
-            rlSum.insert(0, 0)
-            change = True
-        if(len(rrSum) < maxLen):
-            rrSum.insert(0, 0)
-            change = True
-        if(not change):
-            break
-
     lSum = Add(llSum, lrSum)
     rSum = Add(rlSum, rrSum)
     total = Add(lSum, rSum)
@@ -87,14 +66,14 @@ def MultBinary(x, y, xW, yW):
     return total
 num = 0
 x = []
-for i in range(6):
-    x.append(random.randint(0,1))
+for i in range(3):
+    x.append(random.randint(1,1))
     print(x[i], end='')
 
 print()
 y = []
-for i in range(6):
-    y.append(random.randint(0,1))
+for i in range(3):
+    y.append(random.randint(1,1))
     print(y[i], end='')
 print()
 
