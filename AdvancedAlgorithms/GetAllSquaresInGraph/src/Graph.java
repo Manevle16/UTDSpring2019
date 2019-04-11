@@ -39,4 +39,8 @@ public class Graph {
     public HashMap<Node, Vector<Node>> getAdjacent() {
         return adjacent;
     }
+
+    public Vector<Node> getNodes(){
+        return nodes;
+    }
 }

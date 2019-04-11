@@ -19,6 +19,10 @@ public class Node {
         return visited;
     }
 
+    public boolean isMarkedOrVisited(){
+        return marked || visited;
+    }
+
     public void setVisited(boolean visited) {
         this.visited = visited;
     }
