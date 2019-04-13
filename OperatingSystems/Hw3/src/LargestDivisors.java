@@ -1,6 +1,3 @@
-import java.util.Arrays;
-
-
 public class LargestDivisors implements Runnable {
 
     private int start;
