@@ -8,7 +8,7 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-           int frameNum = Integer.parseInt(args[0]);
+            int frameNum = Integer.parseInt(args[0]);
            //int frameNum = 10;
 
             //Initialize page table array to have space equal to the passed in number of frames
@@ -166,7 +166,7 @@ public class Main {
             printTotals("Random",  typeMap.get(Random));
 
         }catch (Exception e){
-
+            System.out.println(e.toString());
         }
     }
 
